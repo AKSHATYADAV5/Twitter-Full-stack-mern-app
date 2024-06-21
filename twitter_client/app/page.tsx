@@ -3,10 +3,10 @@ import {BsTwitter,BsBell,BsEnvelope, BsBookmark} from 'react-icons/bs'
 // import {BsSearch} from 'react-icons/bs'
 import {BiHash, BiHomeCircle, BiUser} from 'react-icons/bi'
 import Image from "next/image";
-import {Inter} from "next/font/google";
+
 import FeedCard from "@/components/FeedCard";
 
-const inter = Inter({subsets:["latin"]});
+// const inter = Inter({subsets:["latin"]});
 
 interface TwitterSidebarButton{
   title:string;
@@ -29,19 +29,19 @@ const sidebarMenuItems:TwitterSidebarButton[] = [
 
 export default function Home() {
   return (
-    <div className={inter.className}>
+    <div >
       <div className="grid grid-cols-12 h-screen w-screen px-56">
-        <div className="col-span-3 pt-8 px-4">
-          <div className="text-4xl h-fit w-fit hover:bg-gray-800 rounded-full p-4 cursor-pointer">
+        <div className="col-span-3 pt-8 border ml-28">
+          <div className="text-2xl h-fit w-fit hover:bg-gray-800 rounded-full p-4 cursor-pointer">
             <BsTwitter />
           </div>
-          <div className="mt-4 text-2xl pr-4">
+          <div className="mt-1 text-xl pr-4">
             <ul>
               {sidebarMenuItems.map((item)=>(
                 <li 
-                  className="flex justify-start items-center gap-4 hover:bg-gray-800 rounded-full px-5 py-2 w-fit cursor-pointer mt-2"
+                  className="flex justify-start items-center gap-4 hover:bg-gray-800 rounded-full px-3 py-3 w-fit cursor-pointer mt-2"
                 key={item.title}>
-                  <span>{item.icon}</span>
+                  <span className="text-3xl">{item.icon}</span>
                   <span>{item.title}</span>
                 </li>
               ))}
@@ -53,7 +53,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="col-span-6 border-r-[1px] border-l-[1px] border border-gray-600">
+        <div className="col-span-5 border-r-[1px] border-l-[1px] border border-gray-600">
           <FeedCard/>
           <FeedCard/>
           <FeedCard/>
