@@ -1,7 +1,8 @@
 import React from 'react';
 import {BsTwitter,BsBell,BsEnvelope, BsBookmark} from 'react-icons/bs'
 // import {BsSearch} from 'react-icons/bs'
-import {BiHash, BiHomeCircle, BiUser} from 'react-icons/bi'
+import {BiHash, BiHomeCircle, BiMoney, BiUser} from 'react-icons/bi'
+import { SlOptions } from 'react-icons/sl';
 import Image from "next/image";
 
 import FeedCard from "@/components/FeedCard";
@@ -22,8 +23,10 @@ const sidebarMenuItems:TwitterSidebarButton[] = [
   {title:"Notifications", icon:<BsBell />},
   {title:"Messages", icon:<BsEnvelope />},
   {title:"Bookmarks", icon:<BsBookmark/>},
+  {title:"Twitter Blue", icon:<BiMoney />},
   // {title:"Lists", icon:<BsListCheck />},
   {title:"Profile", icon:<BiUser />},
+  {title:"More Options", icon:<SlOptions/>},
   // {title:"More", icon:<BsThreeDotsVertical />},
 ]
 
@@ -31,7 +34,7 @@ export default function Home() {
   return (
     <div >
       <div className="grid grid-cols-12 h-screen w-screen px-56">
-        <div className="col-span-3 pt-8 border ml-28">
+        <div className="col-span-3 pt-8 ml-28">
           <div className="text-2xl h-fit w-fit hover:bg-gray-800 rounded-full p-4 cursor-pointer">
             <BsTwitter />
           </div>
@@ -47,13 +50,13 @@ export default function Home() {
               ))}
             </ul>
             <div className="mt-5 px-3">
-              <button className="bg-[#1d9bf0] font-semibold p-4 text-lg rounded-full w-full">
+              <button className="bg-[#1d9bf0] font-semibold py-2 px-4 text-lg rounded-full w-full">
                 Tweet
               </button>
             </div>
           </div>
         </div>
-        <div className="col-span-5 border-r-[1px] border-l-[1px] border border-gray-600">
+        <div className="col-span-5 border-r-[1px] border-l-[1px] h-screen overflow-scroll border-gray-600">
           <FeedCard/>
           <FeedCard/>
           <FeedCard/>
