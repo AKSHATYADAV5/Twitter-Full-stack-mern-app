@@ -53,7 +53,11 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="col-span-6" style={{ borderRight: "1px solid gray", borderLeft: "1px solid gray" }}>
+        <div className="col-span-6 border-r-[1px] border-l-[1px] border border-gray-600">
+          <FeedCard/>
+          <FeedCard/>
+          <FeedCard/>
+          <FeedCard/>
           <FeedCard/>
         </div>
         <div className="col-span-3"></div>
