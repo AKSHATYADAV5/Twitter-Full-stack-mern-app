@@ -6,13 +6,15 @@
   "scripts": {
     "start": "node build/index",
     "build": "tsc -p .",
-    "dev": "tsc-watch --onSuccess \"npm start\"" 
+    "dev": "tsc-watch --onSuccess \"npm start\""
   },
   "devDependencies": {
+    "prisma": "^5.15.1",
     "tsc-watch": "^6.2.0",
     "typescript": "^5.5.2"
   },
   "dependencies": {
+    "@prisma/client": "^5.15.1",
     "express": "^4.19.2"
   }
 }
