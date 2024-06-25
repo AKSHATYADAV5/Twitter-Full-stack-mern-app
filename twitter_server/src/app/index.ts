@@ -4,22 +4,24 @@ import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import { prismaClient } from "../clients/db";
 
+import {user} from "./user";
+
 export async function initServer() {
     const app = express();
 app.use(bodyParser.json());
 
 const graphqlServer = new ApolloServer({
     typeDefs: `
+        ${user.types}
+
         type Query {
-            sayHello: String
-            id: ID
+            ${user.queries}
         }
         
     `,
     resolvers: {
         Query: {
-            sayHello: () => 'hello from graphql server',
-            id: () => '123', // This is a static value for demonstration. Replace it with dynamic logic as needed.
+            ...user.resolvers.queries,
         },
         
     },

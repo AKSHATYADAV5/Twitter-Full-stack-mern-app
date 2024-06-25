@@ -17,23 +17,22 @@ const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const server_1 = require("@apollo/server");
 const express4_1 = require("@apollo/server/express4");
+const user_1 = require("./user");
 function initServer() {
     return __awaiter(this, void 0, void 0, function* () {
         const app = (0, express_1.default)();
         app.use(body_parser_1.default.json());
         const graphqlServer = new server_1.ApolloServer({
             typeDefs: `
+        ${user_1.user.types}
+
         type Query {
-            sayHello: String
-            id: ID
+            ${user_1.user.queries}
         }
         
     `,
             resolvers: {
-                Query: {
-                    sayHello: () => 'hello from graphql server',
-                    id: () => '123', // This is a static value for demonstration. Replace it with dynamic logic as needed.
-                },
+                Query: Object.assign({}, user_1.user.resolvers.queries),
             },
         });
         yield graphqlServer.start();
