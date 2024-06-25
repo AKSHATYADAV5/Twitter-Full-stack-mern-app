@@ -1,9 +1,10 @@
-import '@/styles/globals.css'
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import type { AppProps } from 'next/app'
-import {Inter} from "next/font/google";
+import "@/styles/globals.css";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import type { AppProps } from "next/app";
+import {Inter, Quicksand} from "next/font/google";
 
 const inter=Inter({subsets:["latin"]});
+const quicksand=Quicksand({subsets:["latin"]});
 
 export default function App({ Component, pageProps }: AppProps) {
     return (

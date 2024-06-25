@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+// ,{ useCallback }
 import {BsTwitter,BsBell,BsEnvelope, BsBookmark} from 'react-icons/bs'
 // import {BsSearch} from 'react-icons/bs'
 import {BiHash, BiHomeCircle, BiMoney, BiUser} from 'react-icons/bi'
 import { SlOptions } from 'react-icons/sl';
 import Image from "next/image";
-import { GoogleLogin } from '@react-oauth/google';
+import { CredentialResponse, GoogleLogin} from '@react-oauth/google';
 import FeedCard from "@/components/FeedCard";
-
+// const GoogleLogin = React.lazy(() => import('@react-oauth/google').then(module => ({ default: module.GoogleLogin })));
 // const inter = Inter({subsets:["latin"]});
+
+// Now you can use GoogleLogin in your component as usual
+
+import dynamic from 'next/dynamic';
+
+// Dynamically import GoogleLogin with SSR disabled
+// const GoogleLoginButton = dynamic(() => import('@/components/GoogleLoginButton'), {
+//   ssr: false, // Disable server-side rendering for this component
+// });
 
 interface TwitterSidebarButton{
   title:string;
@@ -24,16 +34,14 @@ const sidebarMenuItems:TwitterSidebarButton[] = [
   {title:"Messages", icon:<BsEnvelope />},
   {title:"Bookmarks", icon:<BsBookmark/>},
   {title:"Twitter Blue", icon:<BiMoney />},
-  // {title:"Lists", icon:<BsListCheck />},
   {title:"Profile", icon:<BiUser />},
   {title:"More Options", icon:<SlOptions/>},
-  // {title:"More", icon:<BsThreeDotsVertical />},
 ]
 
 export default function Home() {
-  const handleLoginWithGoogle = useCallback((cred:CredentialResponse) => {
+  // const handleLoginWithGoogle = useCallback((cred:CredentialResponse) => {
     
-  },[])
+  // },[])
 
   return (
     <div >
@@ -68,9 +76,14 @@ export default function Home() {
           <FeedCard/>
         </div>
         <div className="col-span-3">
-          <div className="p-5 bg-slate-700 rounded-lg">
+          <div className="p-5 bg-slate-700 rounded-lg"> 
             <h1 className="my-2 text-2xl">New to Twitter?</h1>
-            <GoogleLogin onSuccess={(cred) => console.log(cred)}/>
+            {/* <Suspense fallback={<div>Loading...</div>}> */}
+            <GoogleLogin
+      onSuccess={(credentialResponse) => console.log(credentialResponse)}
+      onError={() => console.log('Login Failed')}
+    />
+            {/* </Suspense> */}
           </div>
         </div>
       </div>
